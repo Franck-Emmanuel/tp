@@ -59,11 +59,20 @@
 				$nbcomm=mysqli_num_rows($res); // Retourne le nombre de lignes dans un résultat. 
 				$nbpages=ceil($nbcomm/$commparpage); /*Ceil arrondit a l'entier supérieur*/
 				echo "<br> Pages : ";
+				
+				if ($page>1)
+				{
 				echo "<a href='commentaires.php?page=1'> << </a>";
 				echo "<a href='commentaires.php?page=".($page-1)."'> < </a>";
-				for($i=($page-2);$i<=($page+2);$i++)
+				}
+				
+				for($i=($page);$i<=($page+2);$i++)
+					
 				{
+				if($i<$nbpages + 1)
+					{
 					echo "<a href='commentaires.php?page=$i'> $i </a>";
+					}
 				}
 			}
 			echo "<a href='commentaires.php?page=".($page+1)."'> > </a>";
